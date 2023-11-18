@@ -1,1 +1,2 @@
-ImageGenerator
+*.ckpt
+*__pycache__*
