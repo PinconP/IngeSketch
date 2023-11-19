@@ -1,0 +1,10 @@
+ingescape >= 3.0.4
+matplotlib
+speech_recognition
+opencv-python==4.5.5.64
+numpy==1.22.3
+Pillow==9.1.0
+transformers
+pytorch_lightning
+torch
+requests
