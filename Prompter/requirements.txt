@@ -1,1 +1,4 @@
 ingescape >= 3.0.4
+Pillow
+matplotlib
+speech_recognition
