@@ -9,7 +9,6 @@
 
 import sys
 import ingescape as igs
-
 import random
 import numpy as np
 import cv2

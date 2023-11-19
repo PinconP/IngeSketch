@@ -1,1 +1,8 @@
 ingescape >= 3.0.4
+numpy
+transformers
+Pillow
+pytorch_lightning
+torch
+opencv-python
+requests
