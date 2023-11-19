@@ -21,16 +21,12 @@ import json
 from difflib import get_close_matches
 import random
 import speech_recognition as sr
-from tkinter import simpledialog, messagebox,Button
+from tkinter import simpledialog, messagebox, Button
 
 import tkinter as tk
 from tkinter import simpledialog
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
-
-
-
-
 
 
 # Load the synonyms from the JSON file
@@ -70,6 +66,7 @@ synonyms_assemble = (
     + synonyms_for_no
 )
 
+
 def speech_recognition():
     recognizer = sr.Recognizer()
 
@@ -79,13 +76,11 @@ def speech_recognition():
         # recognizer.adjust_for_ambient_noise(source)
 
         try:
-        
             # Record audio for a max of 5 seconds after speech has been detected
             # If no speech is detected for 5 seconds, then it will timeout
-            audio_data = recognizer.listen(
-                source, timeout=5, phrase_time_limit=5)
+            audio_data = recognizer.listen(source, timeout=5, phrase_time_limit=5)
 
-            text = recognizer.recognize_google(audio_data, language='en-US')
+            text = recognizer.recognize_google(audio_data, language="en-US")
             print(f"Vous avez dit : {text}")
             return text
         except Exception as e:
@@ -119,35 +114,38 @@ def is_synonym(word, synonyms):
     return word_lower in synonyms_lower
 
 
-"""def get_user_input(windown_title="Input"):
-    root = tk.Tk()
-    root.withdraw()  # Cache la fenêtre principale de tkinter
-    user_input = simpledialog.askstring(windown_title, "")
-    return user_input"""
-
-
 def get_user_input(window_title="Input"):
     # Initialize the root Tkinter widget
     root = tk.Tk()
     root.title(window_title)
 
-    # Set the window size to 300x200 pixels
-    root.geometry('500x100')  # Width x Height
-    
+    # Set the window size to 500x100 pixels
+    root.geometry("500x100")  # Width x Height
+
     # Load the image using Pillow
     pil_image = Image.open("microphone.png")
-    pil_image = pil_image.resize((50, 50), Image.Resampling.LANCZOS)  # Resize the image to 50x50 pixels
+    pil_image = pil_image.resize(
+        (50, 50), Image.Resampling.LANCZOS
+    )  # Resize the image to 50x50 pixels
 
     # Convert the PIL image to a Tkinter-compatible photo image
     tk_image = ImageTk.PhotoImage(pil_image)
     # Configure the button with the image and command to call speech_recognition function
-    button = Button(root, image=tk_image, command=lambda: simpledialog.askstring(window_title, "Enter something or press the button:"))
+    button = Button(
+        root,
+        image=tk_image,
+        command=lambda: simpledialog.askstring(
+            window_title, "Enter something or press the button:"
+        ),
+    )
     button.image = tk_image  # Keep a reference so it's not garbage collected
     button.pack()
 
     # Function to be called when button is clicked, replacing the entry with the speech_recognition's return value
     def on_button_click():
-        entry_var.set(speech_recognition())  # Calls speech_recognition and sets its return value to entry_var
+        entry_var.set(
+            speech_recognition()
+        )  # Calls speech_recognition and sets its return value to entry_var
         root.quit()  # Closes the Tkinter window
 
     button.config(command=on_button_click)
@@ -209,8 +207,7 @@ def replace_white_pixels(img_scribble_path, sd_generated_path, output_path):
 def input_callback(iop_type, name, value_type, value, my_data):
     if value_type == igs.IMPULSION_T and name == "greenlight":
         igs.service_call("Whiteboard", "chat", "Hello citizen of the Earth", "")
-        
-        
+
         looper = True
         while looper:
             user_input = output_chat_message(random.choice(synonyms_for_want_anything))
@@ -220,20 +217,22 @@ def input_callback(iop_type, name, value_type, value, my_data):
 
             if isinstance(user_input, str):
                 if is_synonym(user_input, synonyms_for_want_draw):
-                    prompt_before_remodel = output_chat_message("What would you like to draw ?")
+                    prompt_before_remodel = output_chat_message(
+                        "What would you like to draw ?"
+                    )
                     prompt = prompt_engineer(prompt_before_remodel)
 
                     igs.output_set_string("prompt", prompt)
                     igs.output_set_string("chat_message", prompt_before_remodel)
 
                     igs.output_set_impulsion("greenlight")
-                if True==True: # TODO: Replace by a condition that allows to enter here only when there already are pictures on the Whiteboard
+                if (
+                    True == True
+                ):  # TODO: Replace by a condition that allows to enter here only when there already are pictures on the Whiteboard
                     if is_synonym(user_input, synonyms_for_redraw):
                         igs.output_set_impulsion("greenlight_redraw")
 
                     elif is_synonym(user_input, synonyms_for_scribble):
-                        print("if entered")
-
                         replace_white_pixels(
                             "/home/pinconp/Images/ingescape/scribble_transparent.jpg",
                             "/home/pinconp/Images/ingescape/output_model.jpg",
@@ -245,7 +244,6 @@ def input_callback(iop_type, name, value_type, value, my_data):
                         )
 
                     elif is_synonym(user_input, synonyms_for_redo_sketch):
-                    # elif user_input == "Redo the sketch":
                         igs.output_set_string("prompt", prompt)
                         igs.output_set_impulsion("greenlight")
 

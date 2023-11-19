@@ -61,7 +61,6 @@ def input_callback_image(iop_type, name, value_type, value, my_data):
 
     arguments_list = (image_base64, 10.0, 10.0, 512.0, 512.0)
 
-    # arguments_list = (pickle.dumps(process_output), 256.0, 256.0, 512.0, 512.0)
     igs.service_call("Whiteboard", "addImage", arguments_list, "")
 
 
