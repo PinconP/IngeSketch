@@ -10,26 +10,32 @@
 import sys
 import ingescape as igs
 import pickle
+
+
 class scribble_prompt:
     def __init__(self, scribble=None, prompt=None):
         self.scribble = scribble
         self.prompt = prompt
 
-#inputs
+
+# inputs
 def input_callback_prompt(iop_type, name, value_type, value, my_data):
     if value_type == igs.STRING_T:
         pp.prompt = value
         print(value)
-        
+
+
 def input_callback_scribble(iop_type, name, value_type, value, my_data):
     if value_type == igs.DATA_T:
         pp.scribble = pickle.loads(value)
+
 
 def input_callback_impusle(iop_type, name, value_type, value, my_data):
     if value_type == igs.IMPULSION_T:
         print(pp.prompt)
         igs.output_set_string("prompt", pp.prompt)
         igs.output_set_data("scribble", pickle.dumps(pp.scribble))
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
@@ -42,7 +48,9 @@ if __name__ == "__main__":
 
     igs.agent_set_name(sys.argv[1])
     igs.definition_set_version("1.0")
-    igs.definition_set_description("""Stores a prompt and a scribble, and returns it when asked to.""")
+    igs.definition_set_description(
+        """Stores a prompt and a scribble, and returns it when asked to."""
+    )
     igs.log_set_console(True)
     igs.log_set_file(True, None)
     igs.set_command_line(sys.executable + " " + " ".join(sys.argv))
@@ -63,4 +71,3 @@ if __name__ == "__main__":
     input()
 
     igs.stop()
-
