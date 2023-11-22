@@ -1,38 +1,48 @@
-# IngeSketch 
+# ReadMe for Scribbler agent
 
-IngeSketch est assistant de dessin permettant de ganarer une image à partir d'un promprt et d'un dessin peu élaboré réalisé par l'utilisateur. Il est également muni d'un agent conversationnel permettant de guider l'utilisateur dans son utilisation de l'application
+## Overview
 
-Le Scribbler est une composante de l'application IngeSketch qui permet à l'utilisateur de dessiner sur une fenêtre pop-up. Une fois le dessin effectué, l'image générée est renvoyée pour un usage ultérieur.
+Scribbler is a Python-based agent created Pierre Pinçon and Dorian Saurat for Ingeniuty I/O's course at UPSSITECH's engineering school, designed to provide a simple and intuitive interface for users to draw scribbles on a digital canvas. This agent leverages OpenCV for drawing, NumPy for array manipulations, and PIL for image processing.
 
-## Fonctionnalités 
+## Features
 
-Interface de dessin pop-up : 
-Ouvre une fenêtre pop-up où l'utilisateur peut effectuer des dessins.
+- **Drawing Canvas**: Utilizes OpenCV to create an interactive canvas where users can draw with their mouse.
+- **Transparent Scribble Generation**: Converts the drawn scribbles into a transparent image format.
+- **PIL Image Processing**: Utilizes PIL to handle image conversions and save the scribbles in a desired format.
+- **Network Device Integration**: Works with network devices, allowing for broader application use.
 
-Capture du dessin : 
-Enregistre le dessin effectué par l'utilisateur.
+## Requirements
 
-Conversion en image : 
-Convertit le dessin en une image au format PIL (Python Imaging Library).
+- Python 3
+- OpenCV (`cv2`)
+- NumPy
+- PIL (Python Imaging Library)
+- Tkinter (for file dialogs)
+- `ingescape` custom module
 
-Enregistrement local : 
-Sauvegarde l'image générée localement pour permettre à l'utilisateur de l'afficher ultérieurement.
+## Installation
 
-## Prerequis 
+To install Scribbler, ensure that Python 3 is installed along with the required modules listed above. Clone or download the repository and run the `main.py` script.
 
-Python 3 
-Libs : ingescape, opencv-python, numpy, pillow, matplotlib, SpeechRecognition
+## Usage
 
-## Entrées 
-Impulsion (IMPULSION_T) : 
-L'entrée principale, déclenchant le processus de dessin. Lorsque cette impulsion est reçue, la fenêtre pop-up de dessin s'ouvre.
+Run the script using the following command syntax:
+`python3 main.py [agent_name] [network_device] [port]`
+Replace `[agent_name]`, `[network_device]`, and `[port]` with appropriate values based on your setup.
 
-## Sorties 
+### Drawing Interface
 
-Scribble (DATA_T) : 
-Les données du dessin de l'utilisateur, converties en format binaire (pickled) pour être renvoyées.
+Upon triggering the input, a window titled 'Canvas' will pop up. You can draw on this canvas using your mouse. Press 'q' to quit the drawing interface.
 
-Chemin du dessin (STRING_T) : 
-Le chemin local où l'image générée est sauvegardée en format PNG. Ce chemin est fourni pour permettre à l'utilisateur de localiser et afficher l'image ultérieurement.
+### Outputs
 
-## Utilisation 
+- **Scribble Image**: The drawn scribble is saved as a transparent image.
+- **Scribble Path**: The path to the saved scribble image is outputted for later access.
+
+## Network Device Compatibility
+
+Scribbler is designed to work with various network devices. Ensure the network device is correctly specified when running the script.
+
+## Limitations
+
+- The application currently only supports basic drawing and does not have features like undo for example.
