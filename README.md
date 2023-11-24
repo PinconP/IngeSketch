@@ -26,9 +26,19 @@ The dependancies are listed in the requirements.txt file.
 
 ### Installation
 
+For the libraries:
+
 ```bash
 pip install -r requirements.txt
 ```
+
+For the diffusion model:
+
+```
+python3 model_downloader.py
+```
+
+If the model fails to download, you can download it manually [here](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt?download=true) and put it in the "models" folder within the ImageGenerator agent.
 
 ### Usage
 

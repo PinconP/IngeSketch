@@ -2,7 +2,7 @@
 
 ## Overview
 
-Projector is a Python-based agent created Pierre Pinçon and Dorian Saurat for Ingeniuty I/O's course at UPSSITECH's engineering school, it displays images on the whiteboard. This software can take an image input either as a Base64-encoded string or a direct path to the image file. It's an ideal tool for interactive presentations, collaborative sessions, or any scenario where sharing visual content is key.
+Projector is a Python-based agent created Pierre Pinçon and Dorian Saurat for Ingeniuty I/O's course at UPSSITECH's engineering school, it displays images on the whiteboard. This software can take an image input either as a Base64-encoded string or a direct path to the image file.
 
 ## Features
 

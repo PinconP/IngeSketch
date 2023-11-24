@@ -1,22 +1,35 @@
-# IngeSketch 
+# ReadMe for ReThinker agent
 
-IngeSketch est assistant de dessin permettant de ganarer une image à partir d'un promprt et d'un dessin peu élaboré réalisé par l'utilisateur. Il est également muni d'un agent conversationnel permettant de guider l'utilisateur dans son utilisation de l'application
+## Overview
 
-Le Rethinker est une Agent de l'application IngeSketch qui permet permet de stocker une suggestion et un dessin , puis de les restituer sur demande.
+ReThinker is a Python-based agent created Pierre Pinçon and Dorian Saurat for Ingeniuty I/O's course at UPSSITECH's engineering school, designed as a way to get the scribble and/or the prompt whenever an impuslion is received. Its goal is to temporize the system and avoid the data to be sent in the "wrong" order.
 
-## Fonctionnalités 
+## Inputs
 
-Stocke une suggestion et un gribouillage.
+- **Scribble**: The scribble is received and stored.
+- **Prompt**: The prompt is received and stored.
+- **Impulsion**: When received, tells to the agent to set the scribble and the prompt as outputs.
 
-Restitue la suggestion et le gribouillage sur demande.
+## Outputs
 
-## Prérequis 
+- **Scribble**: When asked, the scribble is set as output.
+- **Prompt**: When asked, the prompt is set as output.
 
-Python 3 
-Libs : ingescape, pickle 
+## Requirements
 
-## Entrées 
+- Python 3
+- `ingescape`
 
-## Sorties 
+## Installation
 
-## Utilisation 
+To install Scribbler, ensure that Python 3 is installed along with the required modules listed above. Clone or download the repository and run the `main.py` script.
+
+## Usage
+
+Run the script using the following command syntax:
+`python3 main.py [agent_name] [network_device] [port]`
+Replace `[agent_name]`, `[network_device]`, and `[port]` with appropriate values based on your setup.
+
+## Network Device Compatibility
+
+Scribbler is designed to work with various network devices. Ensure the network device is correctly specified when running the script.

@@ -18,7 +18,7 @@ Scribbler is a Python-based agent created Pierre Pinçon and Dorian Saurat for I
 - NumPy
 - PIL (Python Imaging Library)
 - Tkinter (for file dialogs)
-- `ingescape` custom module
+- `ingescape`
 
 ## Installation
 
